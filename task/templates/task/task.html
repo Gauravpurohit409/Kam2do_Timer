@@ -1,0 +1,20 @@
+{% extends 'Kam2do/base.html' %}
+
+
+{% block content %}
+<div class="text-center">
+    <p class="font-weight-bold mt-5"> Today</p>
+
+    {% for i in task.all %}
+
+    <form method="POST" action = "{% url 'delete' i.pk %}" enctype="multipart/form-data">
+    {% csrf_token%}
+        {{ i.title }}
+
+        <input type="submit" class="btn btn-secondary btn-sm " name="delete" value="Del" >
+    </form>
+    <br>
+
+    {% endfor %}
+</div>
+{% endblock %}
